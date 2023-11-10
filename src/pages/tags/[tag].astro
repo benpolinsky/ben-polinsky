@@ -1,16 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogLink from "../../components/BlogLink.astro";
+import type { GetStaticPaths, InferGetStaticParamsType } from "astro"
 
-
-export async function getStaticPaths() {
+// eh this sucks... remix is much better with types..
+export const getStaticPaths: GetStaticPaths = (async ()  => {
     const allPosts = await Astro.glob("../blog/*.md")
     const uniqueTags = [...new Set(allPosts.map(ap => ap.frontmatter.tags))].flat()
-    return uniqueTags.map(t => ({params: {tag: t}, props: {posts: allPosts}}))
-}
+    return uniqueTags.map(t => ({params: {tag: t}, props: {posts: allPosts}})) 
+});
 
-const { tag } = Astro.params;
+type params = InferGetStaticParamsType<typeof getStaticPaths>
+
+  // type props = InferGetStaticPropsType<typeof getStaticPaths>
+const { tag } = Astro.params as params;
 const posts = (await Astro.glob("../blog/*.md")).filter(p => p.frontmatter.tags.includes(tag))
+
 ---
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>

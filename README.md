@@ -8,4 +8,4 @@ Sections
 - Music
 - Blog
 
-Figure out ts. I shouldn't have to manually type the return of getStaticPaths, for instance. At least I hope not :). Also not getting any feedback in vscode.
+Astro is interesting, but I don't have great TS support in vscode. 
