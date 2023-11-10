@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogLink from "../../components/BlogLink.astro"
+const allPosts = await Astro.glob("./*.md")
+const pageTitle = "Blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<main>
+		<section>
+			<p>Some musings</p>
+			<ul>
+				{allPosts.map(post => <BlogLink post={post}/>)}
+			</ul>
+		</section>
+	</main>
+</BaseLayout>

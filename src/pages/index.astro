@@ -1,24 +1,14 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.tsx";
+const pageTitle = "Home";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Ben Polinsky - Developer-Rapper-Philospher-King </title>
-	</head>
-	<body>
-		<header>
-			<h1>Ben Polinsky's Home on the Web</h1>
-		</header>
-		
-		<main>
-			<section>
-				<p>More about me: </p>
-			</section>
-		</main>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+	<main>
+		<section>
+			<Greeting client:load messages={["hi", 'yo', 'aloha', 'bonjour']}/>
+			<p>Yeah I'm a developer rapper</p>
+		</section>
+	</main>
+</BaseLayout>

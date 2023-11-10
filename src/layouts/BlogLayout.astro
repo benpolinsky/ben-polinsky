@@ -1,0 +1,12 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const {frontmatter} = Astro.props
+const displayDate = new Date(frontmatter.pubDate).toDateString()
+const tags: string[] = frontmatter.tags
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+    <span>By {frontmatter.author} on {displayDate}</span>
+    <slot />
+    <ul>Tags: {frontmatter.tags.map(t => <li><a href={`/tags/${t}`}>{t}</a></li>)}</ul>
+</BaseLayout>
