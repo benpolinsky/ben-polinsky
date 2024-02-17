@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import chokidar from "chokidar";
+import chokidar from "../";
 
 const watcher = chokidar.watch("file, dir, or glob", {
   ignored: /[\/\\]\./,
@@ -7,7 +7,6 @@ const watcher = chokidar.watch("file, dir, or glob", {
 });
 
 const log = console.log.bind(console);
-
 watcher
   .add('./foo.js')
   .unwatch('./bar.js')

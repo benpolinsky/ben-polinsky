@@ -1,5 +1,3 @@
-// TypeScript Version: 3.0
-
 /// <reference types="node" />
 
 import * as fs from "fs";
